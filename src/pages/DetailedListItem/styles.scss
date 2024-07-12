@@ -1,0 +1,23 @@
+.item-detail {
+    padding: 2rem;
+    max-width: 435px;
+    margin: auto;
+    text-align: center;
+  
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+  
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+  
+    p {
+      font-size: 1rem;
+      margin: 0.5rem 0;
+    }
+}

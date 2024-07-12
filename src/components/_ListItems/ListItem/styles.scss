@@ -1,0 +1,73 @@
+.item {
+    width: 250px;
+    height: 315px;
+    margin: 22px;
+    box-shadow: 10px 10px 5px #4a564be1 !important;
+    display: flex;
+    flex-direction: column;
+    background-color: papayawhip; // Light yellow background for sticky note effect
+    transition: transform 0.3s ease, margin 0.3s ease; // Add margin transition for smoother hover effect
+    cursor: pointer;
+    border-radius: 4px;
+    position: relative;
+}
+
+.item:hover {
+    transform: rotate(3deg);
+    margin-top: -10px; // Move up slightly on hover
+}
+
+.item:hover:nth-child(even) {
+    transform: rotate(-3deg);
+    margin-top: -10px; // Move up slightly on hover
+}
+
+.delete-button {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #f44336;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.delete-button:hover {
+    color: #d32f2f;
+}
+
+.item-thumbnail {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.item-details {
+    padding: 16px;
+}
+
+.item-title {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.item-description {
+    font-size: 1rem;
+    color: #666;
+    margin: 8px 0;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,64 @@
+@mixin flex-center-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  @mixin flex-center-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  @mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  @mixin flex-start {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  @mixin flex-end {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  @mixin license-message-container($background-color, $border-color) {
+    height: 40px;
+    width: 100%;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    border-radius: 2px;
+    padding: 0 24px 0 24px;
+    @include flex-center-row;
+  
+    .license_message_icon_container {
+      width: 34px;
+      height: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+    .license_message_content_container {
+      flex: 1;
+      height: 100%;
+      @include flex-start;
+      align-items: center;
+      .license_message_content {
+        font-size: 14px;
+        margin: 0;
+      }
+    }
+    .license_message_delete_container {
+      width: 44px;
+      height: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      cursor: pointer;
+    }
+  }
+  

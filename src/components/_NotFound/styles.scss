@@ -1,0 +1,57 @@
+@import "../../styles/colors.scss";
+@import "../../styles/mixins.scss";
+
+.not_found_container {
+  width: 100%;
+  height: 100%;
+  background-color: $smokeWhite;
+  @include flex-center-column;
+  .not_found_wrapper {
+    height: 300px;
+    @include flex-center-column;
+    .not_found_title_container {
+      height: 30%;
+      @include flex-center;
+      .not_found_title {
+        color: $primary;
+        margin: 0;
+        font-size: 40px;
+      }
+    }
+    .status_container {
+      height: 40%;
+      @include flex-center;
+
+      .status {
+        color: $primary;
+        font-size: 128px;
+        margin: 0;
+      }
+    }
+    .description_container {
+      height: 30%;
+      @include flex-center;
+
+      .description {
+        font-size: 20px;
+      }
+    }
+    .go_back_container {
+      height: 20%;
+      @include flex-center;
+      .go_back {
+          width: 113px;
+          padding: 8px 16px 8px 16px;
+          background-color: $primary;
+        @include flex-center-row;
+        .anticon-arrow-left{
+          margin-right: 8px;
+        }
+        .go_back_text {
+          color: $white;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
