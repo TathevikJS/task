@@ -1,13 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useItemContext } from '../../context/ItemContext';
 import { Button } from '../../shared/Button';
 import { Item } from '../../types/ItemTypes';
 import { TextConstants } from '../../utils/constants';
 import { ItemModal } from '../_ListItems/ItemModal';
+import { fetchCategories } from '../../services/api';
 import './styles.scss';
 
-export const Header = () => {
+const Header = () => {
   const { dispatch } = useItemContext();
+  const [categories, setCategories] = useState<{ id: number, name: string }[]>([]);
+
+  useEffect(() => {
+    const loadCategories = async () => {
+      const res = await fetchCategories() as { id: number, name: string }[];
+      setCategories(res);
+    };
+
+    loadCategories();
+  }, []);
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
@@ -25,7 +36,7 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <h1 className="header-title">My Sticky Notes</h1>
+      <h1 className="header-title">{TextConstants.HEAD_LINE}</h1>
       <div className="header-controls">
         <input
           type="text"
@@ -35,9 +46,11 @@ export const Header = () => {
         />
         <select className="filter-select" onChange={handleFilterChange}>
           <option value="">All Categories</option>
-          <option value="category1">Category 1</option>
-          <option value="category2">Category 2</option>
-          <option value="category3">Category 3</option>
+          {categories.map((category) => (
+            <option value={category.id} key={category.id}>
+              {category.name}
+            </option>
+          ))}
         </select>
         <Button onClick={openModal}>{TextConstants.ADD_ITEM}</Button>
       </div>
@@ -45,3 +58,5 @@ export const Header = () => {
     </header>
   );
 };
+
+export default Header;

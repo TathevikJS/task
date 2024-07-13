@@ -20,7 +20,6 @@ export const NotFound = () => {
         </div>
         <div className="go_back_container">
           <button className="go_back" onClick={() => navigate(-1)}>
-            {/* <ArrowLeftOutlined className="arrow_left_icon" /> */}
             <p className="go_back_text">{"Go back"}</p>
           </button>
         </div>

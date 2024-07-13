@@ -2,21 +2,23 @@ import { lazy } from "react";
 import { Route, Routes } from "react-router-dom";
 import { NotFoundPage } from "../pages/NotFound";
 
-const ListItems = lazy(() => import('../pages/ListItems'));
-const DetailedListItem = lazy(() => import('../pages/DetailedListItem'));
+const ListItemsPage = lazy(() => import('../pages/ListItemsPage'));
+const DetailedListItemPage = lazy(() => import('../pages/DetailedListItemPage'));
 
-export const RoutesPages = () => {
+const RoutesPages = () => {
   return (
     <Routes>
       <Route 
         path="/items" 
-        element={<ListItems />} 
+        element={<ListItemsPage />} 
       />
       <Route 
         path="/items/:id" 
-        element={<DetailedListItem />} 
+        element={<DetailedListItemPage />} 
       />
       <Route path="*" element={<NotFoundPage />} />
     </Routes>
   );
 };
+
+export default RoutesPages;

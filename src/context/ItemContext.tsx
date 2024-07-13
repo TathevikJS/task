@@ -30,7 +30,7 @@ const initialState: State & {
   searchQuery: '',
   selectedCategory: '',
   currentPage: 1,
-  hasMore: true, // Initially set to true; adjust based on fetched data
+  hasMore: true, 
 };
 
 const ItemContext = createContext<{

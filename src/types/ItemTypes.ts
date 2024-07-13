@@ -1,15 +1,14 @@
-// src/types/ItemTypes.ts
 export interface Item {
     id: number;
     title: string;
     thumbnail: string;
     description: string;
-    fullDescription?: string;
-    category?: string;
-    rating?: number | undefined;
+    fullDescription: string;
+    category: string;
+    rating: number | undefined;
   }
-  
-  export interface ItemCardProps {
+
+  export interface ListItemProps {
     item: Item;
     onView: (id: number) => void;
     onEdit: (item: Item) => void;

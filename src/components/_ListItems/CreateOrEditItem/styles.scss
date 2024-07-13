@@ -1,62 +1,69 @@
-    .modal-content {
-        background: white;
-        padding: 2rem;
-        border-radius: 8px;
-        width: 90%;
-        max-width: 500px;
+.modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 500px;
+}
+
+h2 {
+    margin-bottom: 1rem;
+}
+.error {
+    color: #e74c3c;
+    font-size: 0.875rem;
+    margin-top: 0.25rem;
+  }
+  
+
+.form-group {
+    margin-bottom: 1rem;
+
+    label {
+        display: block;
+        margin-bottom: 0.5rem;
     }
 
-    h2 {
-        margin-bottom: 1rem;
+    input,
+    textarea,
+    select {
+        width: 100%;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 1rem;
     }
 
-    .form-group {
-        margin-bottom: 1rem;
-
-        label {
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        input,
-        textarea {
-            width: 100%;
-            // padding-left: 0.5rem;
-            padding-top: 0.5rem;
-            padding-bottom: 0.5rem;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-        }
-
-        textarea {
-            resize: vertical;
-            height: 100px;
-        }
+    textarea {
+        resize: vertical;
+        height: 100px;
     }
+}
 
-    .form-actions {
-        display: flex;
-        justify-content: space-between;
+.form-actions {
+    display: flex;
+    justify-content: space-between;
 
-        button {
-            padding: 0.5rem 1rem;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            background-color: #3498db;
-            color: white;
-            font-size: 1rem;
+    button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        font-size: 1rem;
+
+        &:hover {
+            background-color: #2980b9;
+        }
+
+        &:last-child {
+            background-color: #e74c3c;
 
             &:hover {
-                background-color: #2980b9;
-            }
-
-            &:last-child {
-                background-color: #e74c3c;
-
-                &:hover {
-                    background-color: #c0392b;
-                }
+                background-color: #c0392b;
             }
         }
     }
+}

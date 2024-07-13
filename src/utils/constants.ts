@@ -12,5 +12,7 @@ export enum TextConstants {
     ITEM_RATING = "Rating",
     ITEM_LIST_TITLE = "Item List",
     ERROR_LOADING_ITEMS = "Error loading items. Please try again.",
+    HEAD_LINE = "My Sticky Notes",
+    ErrorByBoundary = "Error caught by ErrorBoundary",
   }
   
