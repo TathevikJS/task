@@ -65,6 +65,233 @@ const items = [
       category: "Category 2",
       rating: 4.2
     },
+    {
+      id: 6,
+      title: "Item 6",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 6",
+      fullDescription: "Full description of Item 6",
+      category: "Category 3",
+      rating: 2.5
+    },
+    {
+      id: 7,
+      title: "Item 7",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 7",
+      fullDescription: "Full description of Item 7",
+      category: "Category 1",
+      rating: 3.5
+    },
+    {
+      id: 8,
+      title: "Item 8",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 8",
+      fullDescription: "Full description of Item 8",
+      category: "Category 2",
+      rating: 4.7
+    },
+    {
+      id: 9,
+      title: "Item 9",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 9",
+      fullDescription: "Full description of Item 9",
+      category: "Category 3",
+      rating: 4.2
+    },
+    {
+      id: 10,
+      title: "Item 10",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 10",
+      fullDescription: "Full description of Item 10",
+      category: "Category 1",
+      rating: 2.5
+    },
+    {
+      id: 11,
+      title: "Item 11",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 11",
+      fullDescription: "Full description of Item 11",
+      category: "Category 2",
+      rating: 3.5
+    },
+    {
+      id: 12,
+      title: "Item 12",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 12",
+      fullDescription: "Full description of Item 12",
+      category: "Category 3",
+      rating: 4.7
+    },
+    {
+      id: 13,
+      title: "Item 13",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 13",
+      fullDescription: "Full description of Item 13",
+      category: "Category 1",
+      rating: 4.2
+    },
+    {
+      id: 14,
+      title: "Item 14",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 14",
+      fullDescription: "Full description of Item 14",
+      category: "Category 2",
+      rating: 2.5
+    },
+    {
+      id: 15,
+      title: "Item 15",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 15",
+      fullDescription: "Full description of Item 15",
+      category: "Category 3",
+      rating: 3.5
+    },
+    {
+      id: 16,
+      title: "Item 16",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 16",
+      fullDescription: "Full description of Item 16",
+      category: "Category 1",
+      rating: 4.7
+    },
+    {
+      id: 17,
+      title: "Item 17",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 17",
+      fullDescription: "Full description of Item 17",
+      category: "Category 2",
+      rating: 4.2
+    },
+    {
+      id: 18,
+      title: "Item 18",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 18",
+      fullDescription: "Full description of Item 18",
+      category: "Category 3",
+      rating: 2.5
+    },
+    {
+      id: 19,
+      title: "Item 19",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 19",
+      fullDescription: "Full description of Item 19",
+      category: "Category 1",
+      rating: 3.5
+    },
+    {
+      id: 20,
+      title: "Item 20",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 20",
+      fullDescription: "Full description of Item 20",
+      category: "Category 2",
+      rating: 4.7
+    },
+    {
+      id: 21,
+      title: "Item 21",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 21",
+      fullDescription: "Full description of Item 21",
+      category: "Category 3",
+      rating: 4.2
+    },
+    {
+      id: 22,
+      title: "Item 22",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 22",
+      fullDescription: "Full description of Item 22",
+      category: "Category 1",
+      rating: 2.5
+    },
+    {
+      id: 23,
+      title: "Item 23",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 23",
+      fullDescription: "Full description of Item 23",
+      category: "Category 2",
+      rating: 3.5
+    },
+    {
+      id: 24,
+      title: "Item 24",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 24",
+      fullDescription: "Full description of Item 24",
+      category: "Category 3",
+      rating: 4.7
+    },
+    {
+      id: 25,
+      title: "Item 25",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 25",
+      fullDescription: "Full description of Item 25",
+      category: "Category 1",
+      rating: 4.2
+    },
+    {
+      id: 26,
+      title: "Item 26",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 26",
+      fullDescription: "Full description of Item 26",
+      category: "Category 2",
+      rating: 2.5
+    },
+    {
+      id: 27,
+      title: "Item 27",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 27",
+      fullDescription: "Full description of Item 27",
+      category: "Category 3",
+      rating: 3.5
+    },
+    {
+      id: 28,
+      title: "Item 28",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 28",
+      fullDescription: "Full description of Item 28",
+      category: "Category 1",
+      rating: 4.7
+    },
+    {
+      id: 29,
+      title: "Item 29",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 29",
+      fullDescription: "Full description of Item 29",
+      category: "Category 2",
+      rating: 4.2
+    },
+    {
+      id: 30,
+      title: "Item 30",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 30",
+      fullDescription: "Full description of Item 30",
+      category: "Category 3",
+      rating: 2.5
+    },
+    // More items...
+    
   ];
   
   export const fetchItems = async (page = 1) => {
@@ -72,13 +299,14 @@ const items = [
     const start = (page - 1) * pageSize;
     const end = start + pageSize;
     const paginatedItems = items.slice(start, end);
-  
+    
     return new Promise((resolve) => {
       setTimeout(() => {
         resolve(paginatedItems);
       }, 1000);
     });
   };
+  
   
   export const fetchItemById = async (id: number) => {
     const item = items.find(item => item.id === id);

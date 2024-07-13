@@ -1,14 +1,14 @@
+import React from 'react';
 import { useItemContext } from "../../../context/ItemContext";
 import { Modal } from "../../../shared/Modal";
 import { Item } from "../../../types/ItemTypes";
 import { CreateOrEditItem } from "../CreateOrEditItem";
 
-
 export const ItemModal: React.FC = () => {
   const { state, dispatch } = useItemContext();
 
   const handleSaveItem = (item: Item) => {
-    if (state.selectedItem) {
+    if (state.selectedItem?.id) {
       dispatch({ type: 'UPDATE_ITEM', payload: item });
     } else {
       dispatch({ type: 'ADD_ITEM', payload: item });

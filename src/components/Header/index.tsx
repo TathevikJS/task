@@ -13,10 +13,9 @@ const Header = () => {
 
   useEffect(() => {
     const loadCategories = async () => {
-      const res = await fetchCategories() as { id: number, name: string }[];
-      setCategories(res);
+      const res = await fetchCategories();
+      setCategories(res as { id: number, name: string }[]);
     };
-
     loadCategories();
   }, []);
 
@@ -52,7 +51,7 @@ const Header = () => {
             </option>
           ))}
         </select>
-        <Button onClick={openModal}>{TextConstants.ADD_ITEM}</Button>
+        <Button onClick={() => openModal()}>{TextConstants.ADD_ITEM}</Button>
       </div>
       <ItemModal />
     </header>

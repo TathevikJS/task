@@ -30,7 +30,7 @@ const initialState: State & {
   searchQuery: '',
   selectedCategory: '',
   currentPage: 1,
-  hasMore: true, 
+  hasMore: true,
 };
 
 const ItemContext = createContext<{
@@ -65,17 +65,20 @@ const itemReducer = (state: State & {
 } => {
   switch (action.type) {
     case 'SET_ITEMS':
-      return { ...state, items: action.payload as Item[] };
+      return { ...state, items: [...state.items, ...action.payload] }; // Append new items
+    case 'INCREMENT_PAGE':
+      return { ...state, currentPage: state.currentPage + 1 };
+    case 'SET_HAS_MORE':
+      return { ...state, hasMore: action.payload };
+
     case 'SET_DETAILED_ITEM':
       return { ...state, detailedItem: action.payload as Item };
     case 'ADD_ITEM':
-      return { ...state, items: [...state.items, action.payload as Item] };
+      return { ...state, items: [...state.items, action.payload] };
     case 'UPDATE_ITEM':
       return {
         ...state,
-        items: state.items.map(item =>
-          item.id === action.payload.id ? action.payload : item as Item
-        ),
+        items: state.items.map(item => (item.id === action.payload.id ? action.payload : item)),
       };
     case 'REMOVE_ITEM':
       return {
@@ -92,10 +95,6 @@ const itemReducer = (state: State & {
       return { ...state, searchQuery: action.payload };
     case 'SET_SELECTED_CATEGORY':
       return { ...state, selectedCategory: action.payload };
-    case 'INCREMENT_PAGE':
-      return { ...state, currentPage: state.currentPage + 1 };
-    case 'SET_HAS_MORE':
-      return { ...state, hasMore: action.payload };
     default:
       return state;
   }

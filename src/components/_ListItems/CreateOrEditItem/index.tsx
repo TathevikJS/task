@@ -44,7 +44,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
 
   const validateField = (name: string) => {
     const newErrors: { [key: string]: string } = { ...errors };
-
+  
     if (name === 'title' && !formData.title) {
       newErrors.title = 'Title is required';
     } else if (name === 'thumbnail' && !/^(http|https):\/\/[^ "]+$/.test(formData.thumbnail)) {
@@ -55,35 +55,38 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
       newErrors.fullDescription = 'Full Description is required';
     } else if (name === 'category' && !formData.category) {
       newErrors.category = 'Category is required';
-    } else if (formData.rating && name === 'rating' && (formData.rating < 0 || formData.rating > 5)) {
-      newErrors.rating = 'Rating must be between 0 and 5';
+    } else {
+      delete newErrors[name]; // Clear error if field is valid
     }
-
+  
     setErrors(newErrors);
+    console.log(newErrors, 'New Errors');
   };
-
+  
+  const validateForm = () => {
+    let isValid = true;
+    Object.keys(formData).forEach((key) => {
+      validateField(key); // Always validate, but do not set isValid based on this
+      if (errors[key]) {
+        isValid = false; // If there's an error, set isValid to false
+      }
+    });
+    return isValid;
+  };
+  
   const handleSave = () => {
     const allValid = validateForm() && Object.keys(errors).length === 0;
     if (allValid) {
       onSave(formData);
     }
   };
-
-  const validateForm = () => {
-    let isValid = true;
-    Object.keys(formData).forEach((key) => {
-      if (!formData[key as keyof Item]) {
-        validateField(key);
-        isValid = false;
-      }
-    });
-    return isValid;
-  };
-
+  
+  console.log(item, 'Iteem', Object.keys(errors).length);
+  
   return (
     <div className="modal">
       <div className="modal-content">
-        <h2>{item ? 'Edit Item' : 'Create Item'}</h2>
+        <h2>{item?.id ? 'Edit Item' : 'Create Item'}</h2>
         <form>
           <InputField
             label="Title"
@@ -144,7 +147,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
           />
           <div className="form-actions">
             <Button onClick={handleSave} disabled={Object.keys(errors).length > 0}>
-              {item ? 'Edit' : 'Save'}
+              {item?.id ? 'Edit' : 'Save'}
             </Button>
             <Button variant="danger" onClick={onCancel}>Cancel</Button>
           </div>
