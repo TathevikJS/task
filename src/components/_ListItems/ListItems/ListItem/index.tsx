@@ -34,6 +34,7 @@ export const ListItem = memo(
                 e.stopPropagation();
                 onEdit(item);
               }}
+              variant="default"
             >
               {TextConstants.EDIT_ITEM}
             </Button>

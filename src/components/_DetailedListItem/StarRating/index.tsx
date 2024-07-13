@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './styles.scss'
 interface StarRatingProps {
   rating: number | undefined;
 }
@@ -12,11 +12,11 @@ export const StarRating: React.FC<StarRatingProps> = ({ rating }) => {
   return (
     <div className="star-rating">
       {[...Array(fullStars)].map((_, index) => (
-        <span key={`full-${index}`}>&#9733;</span> 
+        <span key={`full-${index}`} className='star'>&#9733;</span> 
       ))}
-      {halfStar && <span>&#9734;</span>} 
+      {halfStar && <span className='star'>&#9734;</span>} 
       {[...Array(emptyStars)].map((_, index) => (
-        <span key={`empty-${index}`}>&#9734;</span> 
+        <span key={`empty-${index}`} className='star'>&#9734;</span> 
       ))}
     </div>
   );
