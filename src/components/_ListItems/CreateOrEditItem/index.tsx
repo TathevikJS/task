@@ -6,6 +6,8 @@ import InputField from './InputField';
 import SelectField from './SelectField';
 import './styles.scss';
 
+type ValidItemKeys = keyof Item;
+
 export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave, onCancel }) => {
   const initialFormData: Item = {
     id: item?.id || Date.now(),
@@ -23,7 +25,12 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
 
   useEffect(() => {
     if (item) {
-      setFormData(item);
+      setFormData({
+        ...initialFormData,
+        ...item,
+      });
+    } else {
+      setFormData(initialFormData);
     }
   }, [item]);
 
@@ -39,12 +46,12 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prevState) => ({ ...prevState, [name]: value }));
-    setErrors((prev) => ({ ...prev, [name]: '' })); 
+    setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const validateField = (name: string) => {
+  const validateField = (name: ValidItemKeys) => {
     const newErrors: { [key: string]: string } = { ...errors };
-  
+
     if (name === 'title' && !formData.title) {
       newErrors.title = 'Title is required';
     } else if (name === 'thumbnail' && !/^(http|https):\/\/[^ "]+$/.test(formData.thumbnail)) {
@@ -55,34 +62,40 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
       newErrors.fullDescription = 'Full Description is required';
     } else if (name === 'category' && !formData.category) {
       newErrors.category = 'Category is required';
+    } else if (name === 'rating' && (formData.rating === undefined || formData.rating < 0)) {
+      newErrors.rating = 'Rating must be a non-negative number';
     } else {
-      delete newErrors[name]; // Clear error if field is valid
+      delete newErrors[name];
     }
-  
+
     setErrors(newErrors);
-    console.log(newErrors, 'New Errors');
   };
-  
+
   const validateForm = () => {
     let isValid = true;
-    Object.keys(formData).forEach((key) => {
-      validateField(key); // Always validate, but do not set isValid based on this
-      if (errors[key]) {
-        isValid = false; // If there's an error, set isValid to false
+    const requiredFields: ValidItemKeys[] = ['title', 'description', 'fullDescription', 'category'];
+    requiredFields.forEach((field) => {
+      if (!formData[field]) {
+        setErrors((prev) => ({
+          ...prev,
+          [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required`,
+        }));
+        isValid = false;
+      } else {
+        validateField(field);
       }
     });
+
     return isValid;
   };
-  
+
   const handleSave = () => {
     const allValid = validateForm() && Object.keys(errors).length === 0;
     if (allValid) {
       onSave(formData);
     }
   };
-  
-  console.log(item, 'Iteem', Object.keys(errors).length);
-  
+
   return (
     <div className="modal">
       <div className="modal-content">
@@ -92,7 +105,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             label="Title"
             id="title"
             name="title"
-            value={formData.title}
+            value={formData.title || ''}
             onChange={handleChange}
             onBlur={() => validateField('title')}
             error={errors.title}
@@ -101,7 +114,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             label="Thumbnail URL"
             id="thumbnail"
             name="thumbnail"
-            value={formData.thumbnail}
+            value={formData.thumbnail || ''}
             onChange={handleChange}
             onBlur={() => validateField('thumbnail')}
             error={errors.thumbnail}
@@ -110,7 +123,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             label="Short Description"
             id="description"
             name="description"
-            value={formData.description}
+            value={formData.description || ''}
             onChange={handleChange}
             onBlur={() => validateField('description')}
             error={errors.description}

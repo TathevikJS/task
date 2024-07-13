@@ -1,12 +1,15 @@
+@import "../../../../styles/colors.scss";
+
 .item {
-    width: 250px;
+    width: 100%; 
+    max-width: 250px;
     height: 315px;
-    margin: 22px;
+    margin: 0; 
     box-shadow: 10px 10px 5px #4a564be1 !important;
     display: flex;
     flex-direction: column;
-    background-color: papayawhip; // Light yellow background for sticky note effect
-    transition: transform 0.3s ease, margin 0.3s ease; // Add margin transition for smoother hover effect
+    background-color: $lightPink;
+    transition: transform 0.3s ease, margin 0.3s ease;
     cursor: pointer;
     border-radius: 4px;
     position: relative;
@@ -14,12 +17,12 @@
 
 .item:hover {
     transform: rotate(3deg);
-    margin-top: -10px; // Move up slightly on hover
+    margin-top: -10px; 
 }
 
 .item:hover:nth-child(even) {
     transform: rotate(-3deg);
-    margin-top: -10px; // Move up slightly on hover
+    margin-top: -10px; 
 }
 
 .delete-button {
@@ -40,7 +43,7 @@
 
 .item-thumbnail {
     width: 100%;
-    height: 200px;
+    height: 180px;
     object-fit: cover;
 }
 

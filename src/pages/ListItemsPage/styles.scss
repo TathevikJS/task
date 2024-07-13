@@ -1,15 +1,7 @@
 .list-items {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 5rem;
+    gap: 2rem;
     padding: 1rem;
-
 }
-
-// .list-items.loading {
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//   }
-  
   

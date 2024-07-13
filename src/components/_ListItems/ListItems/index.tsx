@@ -1,37 +1,43 @@
-import React, { useEffect } from "react";
+
+import { useNavigate } from "react-router";
+import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll";
+import { useItemContext } from "../../../context/ItemContext";
+import { useEffect, useMemo } from "react";
 import { Item } from "../../../types/ItemTypes";
 import { fetchItems } from "../../../services/api";
-import { useItemContext } from "../../../context/ItemContext";
-import { useNavigate } from "react-router";
 import { ListItem } from "./ListItem";
 import { Loading } from "../../../shared/Loading";
-import { useInfiniteScroll } from "../../../hooks/useInfiniteScroll"; 
 
 export const ListItems: React.FC = () => {
   const navigate = useNavigate();
   const { state, dispatch } = useItemContext();
   const { searchQuery, selectedCategory, currentPage, hasMore, loading } = state;
 
-  const filteredItems = state.items.filter(item => {
-    const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesCategory = selectedCategory ? item.category === selectedCategory : true;
-    return matchesSearch && matchesCategory;
-  });
+  const filteredItems = useMemo(() => {
+    return state.items.filter((item: Item)=> {
+      const matchesSearch = item.title.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCategory = selectedCategory ? item.category === selectedCategory : true;
+      return matchesSearch && matchesCategory;
+    });
+  }, [state.items, searchQuery, selectedCategory]);
 
   const loadItems = async () => {
-    if (!hasMore || loading) return; // Prevent loading if already loading
-
+    if (!hasMore || loading) return; 
+  
     dispatch({ type: 'SET_LOADING', payload: true });
     const items = await fetchItems(currentPage) as Item[];
-    
+  
     dispatch({ type: 'SET_ITEMS', payload: items });
-    
-    if (items.length === 0) {
+  
+    if (items.length > 0) {
+      dispatch({ type: 'INCREMENT_PAGE' });
+    } else {
       dispatch({ type: 'SET_HAS_MORE', payload: false });
     }
-    
+  
     dispatch({ type: 'SET_LOADING', payload: false });
   };
+  
 
   const handleEditItem = (item: Item) => {
     dispatch({ type: 'OPEN_MODAL', payload: item });
@@ -45,25 +51,28 @@ export const ListItems: React.FC = () => {
     navigate(`/items/${id}`);
   };
 
-  const lastElementRef = useInfiniteScroll(loadItems);
+  const lastItemRef = useInfiniteScroll(loadItems);
 
   useEffect(() => {
-    loadItems();
-  }, [dispatch, currentPage]);
+    console.log('ListItems useEffect');
+    loadItems(); 
+  }, [selectedCategory, searchQuery]); 
+   
 
   return (
     <>
       {filteredItems.map((item: Item, index: number) => (
         <ListItem
-          key={item.id}
+          key={index} 
           item={item}
           onView={() => handleViewItem(item.id)}
           onEdit={() => handleEditItem(item)}
           onDelete={() => handleRemoveItem(item.id)}
-          ref={index === filteredItems.length - 1 ? lastElementRef : null} 
+          ref={index === filteredItems.length - 1 ? lastItemRef : null} 
         />
       ))}
       {loading && <Loading />}
     </>
   );
 };
+

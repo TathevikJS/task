@@ -290,7 +290,150 @@ const items = [
       category: "Category 3",
       rating: 2.5
     },
-    // More items...
+    {
+      id: 31,
+      title: "Item 31",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 31",
+      fullDescription: "Full description of Item 31",
+      category: "Category 1",
+      rating: 3.5
+    },
+    {
+      id: 32,
+      title: "Item 32",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 32",
+      fullDescription: "Full description of Item 32",
+      category: "Category 2",
+      rating: 4.7
+    },
+    {
+      id: 33,
+      title: "Item 33",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 33",
+      fullDescription: "Full description of Item 33",
+      category: "Category 3",
+      rating: 4.2
+    },
+    {
+      id: 34,
+      title: "Item 34",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 34",
+      fullDescription: "Full description of Item 34",
+      category: "Category 1",
+      rating: 2.5
+    },
+    {
+      id: 35,
+      title: "Item 35",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 35",
+      fullDescription: "Full description of Item 35",
+      category: "Category 2",
+      rating: 3.5
+    },
+    {
+      id: 36,
+      title: "Item 36",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 36",
+      fullDescription: "Full description of Item 36",
+      category: "Category 3",
+      rating: 4.7
+    },
+    {
+      id: 37,
+      title: "Item 37",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 37",
+      fullDescription: "Full description of Item 37",
+      category: "Category 1",
+      rating: 4.2
+    },
+    {
+      id: 38,
+      title: "Item 38",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 38",
+      fullDescription: "Full description of Item 38",
+      category: "Category 2",
+      rating: 2.5
+    },
+    {
+      id: 39,
+      title: "Item 39",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 39",
+      fullDescription: "Full description of Item 39",
+      category: "Category 3",
+      rating: 3.5
+    },
+    {
+      id: 40,
+      title: "Item 40",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 40",
+      fullDescription: "Full description of Item 40",
+      category: "Category 1",
+      rating: 4.7
+    },
+    {
+      id: 41,
+      title: "Item 41",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 41",
+      fullDescription: "Full description of Item 41",
+      category: "Category 2",
+      rating: 4.2
+    },
+    {
+      id: 42,
+      title: "Item 42",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 42",
+      fullDescription: "Full description of Item 42",
+      category: "Category 3",
+      rating: 2.5
+    },
+    {
+      id: 43,
+      title: "Item 43",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 43",
+      fullDescription: "Full description of Item 43",
+      category: "Category 1",
+      rating: 3.5
+    },
+    {
+      id: 44,
+      title: "Item 44",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 44",
+      fullDescription: "Full description of Item 44",
+      category: "Category 2",
+      rating: 4.7
+    },
+    {
+      id: 45,
+      title: "Item 45",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 45",
+      fullDescription: "Full description of Item 45",
+      category: "Category 3",
+      rating: 4.2
+    },
+    {
+      id: 46,
+      title: "Item 46",
+      thumbnail: "https://via.placeholder.com/150",
+      description: "Short description of Item 46",
+      fullDescription: "Full description of Item 46",
+      category: "Category 1",
+      rating: 2.5
+    }
     
   ];
   

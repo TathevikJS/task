@@ -8,7 +8,7 @@ import { fetchCategories } from '../../services/api';
 import './styles.scss';
 
 const Header = () => {
-  const { dispatch } = useItemContext();
+  const { dispatch, state } = useItemContext();
   const [categories, setCategories] = useState<{ id: number, name: string }[]>([]);
 
   useEffect(() => {
@@ -30,8 +30,11 @@ const Header = () => {
   };
 
   const openModal = () => {
-    dispatch({ type: 'OPEN_MODAL', payload: {} as Item });
+    if (!state.isModalOpen) { // Check if modal is already open
+      dispatch({ type: 'OPEN_MODAL', payload: {} as Item });
+    }
   };
+
 
   return (
     <header className="header">
@@ -46,7 +49,7 @@ const Header = () => {
         <select className="filter-select" onChange={handleFilterChange}>
           <option value="">All Categories</option>
           {categories.map((category) => (
-            <option value={category.id} key={category.id}>
+            <option value={category.name} key={category.id}>
               {category.name}
             </option>
           ))}

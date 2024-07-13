@@ -12,7 +12,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemProps>(
     };
 
     return (
-      <div ref={ref} className="item" onClick={() => onView(item.id)}>
+      <div className="item" onClick={() => onView(item.id)} ref={ref}>
         <button 
           className="delete-button" 
           onClick={handleDeleteClick} 
@@ -25,7 +25,7 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemProps>(
           alt={item.title} 
           className="item-thumbnail" 
           onError={(e) => {
-            e.currentTarget.src = '/path/to/default-image.png'; // Fallback image
+            e.currentTarget.src = '/path/to/default-image.png'; 
           }}
         />
         <div className="item-details">
@@ -45,4 +45,4 @@ export const ListItem = forwardRef<HTMLDivElement, ListItemProps>(
   }
 );
 
-ListItem.displayName = 'ListItem'; // Set display name for better debugging
+ListItem.displayName = 'ListItem';

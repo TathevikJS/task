@@ -5,7 +5,7 @@ import { ButtonProps } from '../../types/buttonTypes';
 export const Button: React.FC<ButtonProps> = ({ onClick, variant = 'default', children, disabled }) => {
   return (
     <button
-      className={`button ${variant} ${disabled ? 'disabled' : ''}`}
+      className={`button ${variant}`}
       onClick={disabled ? undefined : onClick}
       disabled={disabled}
     >
