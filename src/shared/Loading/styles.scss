@@ -2,15 +2,15 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px 0; /* Space around the spinner */
+  margin: 20px 0; 
 }
 
 .spinner {
   border: 4px solid rgba(0, 0, 0, 0.1);
   border-top: 4px solid #3498db;
   border-radius: 50%;
-  width: 30px; /* Size of the spinner */
-  height: 30px; /* Size of the spinner */
+  width: 30px;
+  height: 30px; 
   animation: spin 1s linear infinite;
 }
 

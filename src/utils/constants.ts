@@ -1,6 +1,7 @@
 export enum TextConstants {
     ADD_ITEM = "Add Item",
     EDIT_ITEM = "Edit Item",
+    EDIT = "Edit",
     REMOVE_ITEM = "Remove Item",
     SAVE = "Save",
     CANCEL = "Cancel",

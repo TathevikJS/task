@@ -30,7 +30,7 @@ const Header = () => {
   };
 
   const openModal = () => {
-    if (!state.isModalOpen) { // Check if modal is already open
+    if (!state.isModalOpen) {
       dispatch({ type: 'OPEN_MODAL', payload: {} as Item });
     }
   };

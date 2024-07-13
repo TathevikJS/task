@@ -1,23 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '../../../shared/Button';
 import { CreateOrEditItemProps, Item } from '../../../types/ItemTypes';
-import { fetchCategories } from '../../../services/api';
-import InputField from './InputField';
-import SelectField from './SelectField';
+import { InputField } from './InputField';
+import { SelectField } from './SelectField';
+import { TextConstants } from '../../../utils/constants';
+import { getInitialFormData, loadCategories, validateField, validateForm } from '../../../utils/formHelpers';
 import './styles.scss';
 
-type ValidItemKeys = keyof Item;
-
 export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave, onCancel }) => {
-  const initialFormData: Item = {
-    id: item?.id || Date.now(),
-    title: item?.title || '',
-    thumbnail: item?.thumbnail || '',
-    description: item?.description || '',
-    fullDescription: item?.fullDescription || '',
-    category: item?.category || '',
-    rating: item?.rating || 0,
-  };
+  const initialFormData: Item = getInitialFormData(item);
 
   const [formData, setFormData] = useState<Item>(initialFormData);
   const [categories, setCategories] = useState<{ id: number, name: string }[]>([]);
@@ -35,12 +26,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
   }, [item]);
 
   useEffect(() => {
-    const loadCategories = async () => {
-      const res = await fetchCategories();
-      setCategories(res as { id: number, name: string }[]);
-    };
-
-    loadCategories();
+    loadCategories(setCategories);
   }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -49,48 +35,8 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
     setErrors((prev) => ({ ...prev, [name]: '' }));
   };
 
-  const validateField = (name: ValidItemKeys) => {
-    const newErrors: { [key: string]: string } = { ...errors };
-
-    if (name === 'title' && !formData.title) {
-      newErrors.title = 'Title is required';
-    } else if (name === 'thumbnail' && !/^(http|https):\/\/[^ "]+$/.test(formData.thumbnail)) {
-      newErrors.thumbnail = 'Thumbnail URL is invalid';
-    } else if (name === 'description' && !formData.description) {
-      newErrors.description = 'Short Description is required';
-    } else if (name === 'fullDescription' && !formData.fullDescription) {
-      newErrors.fullDescription = 'Full Description is required';
-    } else if (name === 'category' && !formData.category) {
-      newErrors.category = 'Category is required';
-    } else if (name === 'rating' && (formData.rating === undefined || formData.rating < 0)) {
-      newErrors.rating = 'Rating must be a non-negative number';
-    } else {
-      delete newErrors[name];
-    }
-
-    setErrors(newErrors);
-  };
-
-  const validateForm = () => {
-    let isValid = true;
-    const requiredFields: ValidItemKeys[] = ['title', 'description', 'fullDescription', 'category'];
-    requiredFields.forEach((field) => {
-      if (!formData[field]) {
-        setErrors((prev) => ({
-          ...prev,
-          [field]: `${field.charAt(0).toUpperCase() + field.slice(1)} is required`,
-        }));
-        isValid = false;
-      } else {
-        validateField(field);
-      }
-    });
-
-    return isValid;
-  };
-
   const handleSave = () => {
-    const allValid = validateForm() && Object.keys(errors).length === 0;
+    const allValid = validateForm(formData, setErrors) && Object.keys(errors).length === 0;
     if (allValid) {
       onSave(formData);
     }
@@ -107,7 +53,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             name="title"
             value={formData.title || ''}
             onChange={handleChange}
-            onBlur={() => validateField('title')}
+            onBlur={() => setErrors((prev) => validateField('title', formData, prev))}
             error={errors.title}
           />
           <InputField
@@ -116,7 +62,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             name="thumbnail"
             value={formData.thumbnail || ''}
             onChange={handleChange}
-            onBlur={() => validateField('thumbnail')}
+            onBlur={() => setErrors((prev) => validateField('thumbnail', formData, prev))}
             error={errors.thumbnail}
           />
           <InputField
@@ -125,7 +71,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             name="description"
             value={formData.description || ''}
             onChange={handleChange}
-            onBlur={() => validateField('description')}
+            onBlur={() => setErrors((prev) => validateField('description', formData, prev))}
             error={errors.description}
           />
           <InputField
@@ -135,7 +81,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             value={formData.fullDescription || ''}
             onChange={handleChange}
             type="textarea"
-            onBlur={() => validateField('fullDescription')}
+            onBlur={() => setErrors((prev) => validateField('fullDescription', formData, prev))}
             error={errors.fullDescription}
           />
           <SelectField
@@ -144,7 +90,7 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             name="category"
             value={formData.category || ''}
             onChange={handleChange}
-            onBlur={() => validateField('category')}
+            onBlur={() => setErrors((prev) => validateField('category', formData, prev))}
             options={categories}
             error={errors.category}
           />
@@ -155,12 +101,12 @@ export const CreateOrEditItem: React.FC<CreateOrEditItemProps> = ({ item, onSave
             value={formData.rating || 0}
             onChange={handleChange}
             type="number"
-            onBlur={() => validateField('rating')}
+            onBlur={() => setErrors((prev) => validateField('rating', formData, prev))}
             error={errors.rating}
           />
           <div className="form-actions">
             <Button onClick={handleSave} disabled={Object.keys(errors).length > 0}>
-              {item?.id ? 'Edit' : 'Save'}
+              {item?.id ? TextConstants.EDIT : TextConstants.SAVE}
             </Button>
             <Button variant="danger" onClick={onCancel}>Cancel</Button>
           </div>

@@ -1,7 +1,7 @@
 import { SelectFieldProps } from '../../../../types/formTypes';
 import '../styles.scss'
 
-const SelectField: React.FC<SelectFieldProps> = ({ label, id, name, value, onChange, options, error, onBlur }) => (
+export const SelectField: React.FC<SelectFieldProps> = ({ label, id, name, value, onChange, options, error, onBlur }) => (
   <div className="form-group">
     <label htmlFor={id}>{label}</label>
     <select id={id} name={name} value={value} onChange={onChange} onBlur={onBlur}>
@@ -15,5 +15,3 @@ const SelectField: React.FC<SelectFieldProps> = ({ label, id, name, value, onCha
     {error && <span className="error">{error}</span>}
   </div>
 );
-
-export default SelectField;

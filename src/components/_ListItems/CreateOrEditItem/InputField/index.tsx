@@ -1,7 +1,7 @@
 import { InputFieldProps } from '../../../../types/formTypes';
 import '../styles.scss';
 
-const InputField: React.FC<InputFieldProps> = ({ label, id, name, value, onChange, error, type = 'text', onBlur }) => (
+export const InputField: React.FC<InputFieldProps> = ({ label, id, name, value, onChange, error, type = 'text', onBlur }) => (
   <div className="form-group">
     <label htmlFor={id}>{label}</label>
     {type === 'textarea' ? (
@@ -12,5 +12,3 @@ const InputField: React.FC<InputFieldProps> = ({ label, id, name, value, onChang
     {error && <span className="error">{error}</span>}
   </div>
 );
-
-export default InputField;

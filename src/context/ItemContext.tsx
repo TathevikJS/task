@@ -1,7 +1,7 @@
 import React, { createContext, useReducer } from 'react';
 import { itemReducer, initialState } from './ItemReducer';
 import { Action } from './types'
-import { ItemProviderProps, State } from '../types/contextTypes'; // Ensure correct import paths
+import { ItemProviderProps, State } from '../types/contextTypes'; 
 import { Item } from '../types/ItemTypes';
 
 const ItemContext = createContext<{
